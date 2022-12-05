@@ -255,8 +255,9 @@ sensor_msgs::ImagePtr rosImageFromBuffer(const std::string& frame_id, const rcg:
     uint64_t time = buffer->getTimestampNS();
 
     im->header.seq = 0;
-    im->header.stamp.sec = time / freq;
-    im->header.stamp.nsec = time - freq * im->header.stamp.sec;
+    //im->header.stamp.sec = time / freq;
+    //im->header.stamp.nsec = time - freq * im->header.stamp.sec;
+    im->header.stamp = ros::Time::now();
     im->header.frame_id = frame_id;
 
     // set image size
